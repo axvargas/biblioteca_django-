@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block titulo %}Eliminación de Autor{% endblock titulo %} 
+
+{% block body %}
+{% if error %}
+	<h2>Este autor no existe</h2>
+{% else %}
+<form method="POST">
+  {% csrf_token %}
+	<h2>¿Está seguro que desea eliminar el autor {{ autor.nombre }} {{ autor.apellido }}?</h2>
+  <button type="submit">Eliminar</button>
+	<a href="{% url 'libro:lista_autor' %}">Cancelar</a>
+</form>
+{% endif %}
+
+{% endblock body %}

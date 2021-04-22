@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block titulo %}Creacion de Autores{% endblock titulo %}
+
+{% block body %}
+{% if error %}
+<h2>{{ error }}</h2>
+{% else %}
+<div class="card">
+	<div class="card-header">
+		<strong>{{ titulo_form }}</strong>
+	</div>
+	<div class="card-body card-block">
+		<form method="post" action='#' enctype="multipart/form-data" class="form-horizontal">
+			{% csrf_token %} 
+			<div class="row form-group">
+				<div class="col col-md-3">{{ form.nombre.label }}</div>
+				<div class="col-12 col-md-9">{{ form.nombre }}</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">{{ form.apellido.label }}</div>
+				<div class="col-12 col-md-9">{{ form.apellido }}</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">{{ form.nacionalidad.label }}</div>
+				<div class="col-12 col-md-9">{{ form.nacionalidad }}</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">{{ form.descripcion.label }}</div>
+				<div class="col-12 col-md-9">{{ form.descripcion }}</div>
+			</div>
+			<div class="text-center">
+				<a class="btn btn-danger" href="{% url 'libro:lista_autor' %}" id="boton_cancelar">Cancelar</a>
+				<button class="btn btn-primary" type="submit" id="boton_creacion" >Confirmar</button>
+			</div>
+		</form>
+	</div>
+</div>
+{% endif %}
+
+{% endblock body %}

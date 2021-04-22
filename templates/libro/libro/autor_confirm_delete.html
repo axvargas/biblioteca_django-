@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block titulo %}
+  MattuTeca | Confirmación de Eliminación
+{% endblock titulo %}
+
+{% block body %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="text-center">
+  	<p><strong>¿Está seguro que desea eliminar el registro de {{ autor.nombre }} {{ autor.apellido }}?</strong></p>
+	<a href="{% url 'libro:lista_autor' %}" class="btn btn-danger">Cancelar</a>
+	<button type="submit" class="btn btn-primary">Confirmar</button>
+  </div>
+</form>
+
+{% endblock body %}

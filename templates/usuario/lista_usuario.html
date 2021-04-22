@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block titulo %}
+Mattuteca | Listado de Usuarios
+{% endblock titulo %}
+{% block extra_css %}
+<link rel="stylesheet" href="https//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+{% comment %} <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.24/datatables.min.css"/> {% endcomment %}
+{% endblock extra_css %}
+{% block body %}
+
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-8">
+        <strong class="card-title">Listado de Usuarios</strong>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6 text-right">
+        <button type="button" class="btn btn-primary"
+          onclick="abrir_modal_creacion('{% url 'usuario:crear_usuario' %}');">Registrar Usuario
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <div class="table-stats order-table ov-h">
+    <table id="tabla_usuarios" class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+         
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+<div class="modal fade" id="eliminacion" role="dialog"></div>
+
+{% endblock body %}
+{% block extrajs %}
+<script src="{% static 'js/usuario/index.js' %}"></script>
+{% comment %} <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.24/datatables.min.js"></script> {% endcomment %}
+<script src="{% static 'js/lib/data-table/datatables.min.js' %}"></script> 
+{% comment %} <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>     {% endcomment %}
+{% endblock extrajs %}
